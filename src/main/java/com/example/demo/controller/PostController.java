@@ -41,9 +41,27 @@ public class PostController {
 		postService.deleteById(id);
 	}
 	
-	@PutMapping("/update")
-	public void update(@RequestBody Post p) {
-		postService.updatePost(p);
-	}
+	@PutMapping("/update/{id}")
+	public Post save(@RequestBody Post p,@PathVariable int id) {
+		 Post post = postService.findById(id);
+	        if (post != null) {
+	        	 if (p.getTitle() != null) {
+	 	            post.setTitle(p.getTitle());
+
+	             }
+	        	 if (p.getDescription() != null) {
+	            post.setDescription(p.getDescription());
+	        	 }
+	        	 if(p.getImage() != null) {
+	        		 post.setImage(p.getImage());
+	        	 }
+	        	 if(p.getTag() != null) {
+	        		 post.setTag(p.getTag());
+	        	 }
+	            return postService.save(post);
+	        }
+	        return null;	}
+	
+
 
 }
