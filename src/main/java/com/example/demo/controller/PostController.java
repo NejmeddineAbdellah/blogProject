@@ -45,7 +45,19 @@ public class PostController {
 	public Post save(@RequestBody Post p,@PathVariable int id) {
 		 Post post = postService.findById(id);
 	        if (post != null) {
-	            post.setTitle(post.getTitle());
+	        	 if (p.getTitle() != null) {
+	 	            post.setTitle(p.getTitle());
+
+	             }
+	        	 if (p.getDescription() != null) {
+	            post.setDescription(p.getDescription());
+	        	 }
+	        	 if(p.getImage() != null) {
+	        		 post.setImage(p.getImage());
+	        	 }
+	        	 if(p.getTag() != null) {
+	        		 post.setTag(p.getTag());
+	        	 }
 	            return postService.save(post);
 	        }
 	        return null;	}
