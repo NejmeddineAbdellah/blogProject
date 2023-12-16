@@ -22,6 +22,8 @@ public class PostService {
 		return postRepository.findAll();
 	}
 
+	public List<Post> findByTitle(String title) { return postRepository.findByTitle(title); }
+
 	public Post findById(Integer id) {
 		return postRepository.findById(id).get();
 	}
