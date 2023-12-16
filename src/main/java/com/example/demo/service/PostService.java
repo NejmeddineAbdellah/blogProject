@@ -30,15 +30,8 @@ public class PostService {
 		postRepository.deleteById(id);
 	}
 
-	public void updatePost(int id,Post post) {
-
-		Post post1 = postRepository.findById(id).get();
-		post1.setTitle(post.getTitle());
-		post1.set(machine.getRef());
-		post1.setSalle(machine.getSalle());
-		post1.setDateAchat(machine.getDateAchat());
-		machinerepository.save(mch);
+	public void updatePost(Post post) {
+		postRepository.save(post);
 	}
-
 
 }

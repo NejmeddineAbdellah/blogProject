@@ -41,15 +41,9 @@ public class PostController {
 		postService.deleteById(id);
 	}
 	
-	@PutMapping("/update/{id}")
-	public Post update(@RequestBody Post p,@PathVariable int id) {
-		 Post post = postService.findById(id);
-	        if (post != null) {
-	            post.setTitle(p.getTitle());
-	            return postService.save(post);
-	        }
-	        return null;	}
-
-
+	@PutMapping("/update")
+	public void update(@RequestBody Post p) {
+		postService.updatePost(p);
+	}
 
 }
