@@ -42,14 +42,14 @@ public class PostController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public Post save(@RequestBody Post p,@PathVariable int id) {
+	public Post update(@RequestBody Post p,@PathVariable int id) {
 		 Post post = postService.findById(id);
 	        if (post != null) {
-	            post.setTitle(post.getTitle());
+	            post.setTitle(p.getTitle());
 	            return postService.save(post);
 	        }
 	        return null;	}
-	
+
 
 
 }
